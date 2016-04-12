@@ -4,16 +4,10 @@ class SumOfMultiples
   end
 
   def to(max)
-    sum = 0
-    for i in 0...max
-      if is_multiple?(i)
-        sum += i
-      end  
-    end
-    return sum
+    (0...max).select{ |num| is_multiple?(num)}.reduce(0, :+)
   end 
 
-  def is_multiple?(number)
-    @multiples.any? { |multiple| number % multiple == 0}
+  def is_multiple?(num)
+    @multiples.any? { |multiple| num % multiple == 0}
   end
 end
